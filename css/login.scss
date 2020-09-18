@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.main {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    min-height: 30vh;
+    min-width: 35vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background-color: lightblue;
+    border: 1px solid #6d6d6d;
+    border-radius: 10px;
+    padding: 10px 10px 20px 10px;
+
+    .title {
+        margin: 10px 10px 20px 10px;
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+        }
+    }
+
+    input {
+        padding: 10px;
+        width: 80%;
+        border: 1px solid #858585;
+        border-radius: 5px;
+        margin: 5px 10px;
+    }
+
+    .login-btn {
+        padding: 10px;
+        width: 80%;
+        border: none;
+        border-radius: 5px;
+        margin: 5px 10px;
+        background-color: #277eb1;
+        text-transform: capitalize;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .login-btn:hover {
+        background-color: #1f628a;
+    }
+}

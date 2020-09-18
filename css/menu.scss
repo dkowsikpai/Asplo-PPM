@@ -1,0 +1,94 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+
+@media screen and (min-width: 800px){
+.menu {
+    min-height: 60px;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: center;
+    padding-left: 30px;
+    // background-color: aquamarine;
+    border-bottom: 1px solid #999999;
+    box-shadow: 2px 0px 4px 2px #5c5c5c77;
+    font-family: "Montserrat", sans-serif;
+
+    .menu-title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+    }
+
+    .menu-item {
+        font-size: 1rem;
+        padding: 5px 15px;
+        margin: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        cursor: pointer;
+    }
+
+    .menu-item:hover {
+        background-color: #999999;
+    }
+
+    .dropbtn {
+        // color: white;
+        // padding: 16px;
+        // font-size: 16px;
+        border: none;
+        background-color: transparent;
+      }
+      
+      .dropdown {
+        position: absolute;
+        top: 10px;
+        right: 80px;
+        // padding: 10px;
+        cursor: pointer;
+        img {
+            width: 42px;
+            height: 42px;
+        }
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        // background-color: #f1f1f1;
+        right: 0px;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown-content a:hover {background-color: #999999;}
+      
+      .dropdown:hover .dropdown-content {display: block;}
+      
+    //   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    
+    }
+}
+
+
+
+@media screen and (max-width: 800px){
+    .menu {
+        display: none;
+    }
+}
