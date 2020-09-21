@@ -1,13 +1,23 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+
+    if (!isset($_SESSION["login"]) || $_SESSION["login"] == false){
+        header("Location: ../");
+    }
+
+    // include('../config/connection.php');
+    // connection();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./css/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/css/menu.css" rel="stylesheet" type="text/css"/>
     <title>Open PPM | Dashboard</title>
 </head>
 <body>
-    <div class="menu">
+    <header class="menu">
         <span class="menu-title">
             Open PPM
         </span>
@@ -26,15 +36,21 @@
         <div class="dropdown">
             <button class="dropbtn">
                 <span class="menu-avatar">
-                    <img src="./images/avatar.svg" alt="Avatar"/>
+                    <img src="../assets/images/avatar.svg" alt="Avatar"/>
                 </span>
             </button>
             <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+              <a href="#">Profile</a>
+              <a href="#">Settings</a>
+              <a href="<?php session_destroy(); ?>">Logout</a>
             </div>
           </div>          
-    </div>
+    </header>
+    <main>
+        Hi 
+        <?php
+            echo $_SESSION["userType"];
+        ?>
+    </main>
 </body>
 </html>
