@@ -59,7 +59,7 @@ UPDATE `Customers` SET `pAddress` = '3' WHERE `Customers`.`ID` = 2;
 -- Adding new Projects
 INSERT INTO `Projects` (`ID`, `Title`, `Description`, `CustomerID`, `PM`, `status`, `estimated_effort`, `estimated_cost`, `pCompleted`, `Start_Date`, `Finish_Date`) VALUES
 (1, 'Sirius', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 4, 0, 0.00, 0.00, 0.00, '2020-09-12 13:15:49', '2021-02-27 13:15:49'),
-(2, 'Open PPM', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 2, 3, 0, 0.00, 0.00, 0.00, '2020-09-12 13:15:49', '2021-04-16 13:15:49');
+(2, 'Open PPM', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 2, 4, 0, 0.00, 0.00, 0.00, '2020-09-12 13:15:49', '2021-04-16 13:15:49');
 
 -- Adding Projects->Technology
 INSERT INTO `Project_Technologies` (`ID`, `ProjectID`, `TechID`) VALUES
