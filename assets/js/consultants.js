@@ -1,5 +1,5 @@
 $(function(){
-    alert($("#jsGrid").length);
+    // alert($("#jsGrid").length);
     $("#jsGrid").jsGrid({
         height: "100%",
         width: "100%",

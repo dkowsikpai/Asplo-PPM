@@ -1,10 +1,8 @@
-<!DOCTYPE html>
 <?php
 session_start();
-
-// if (!isset($_SESSION["login"])){
-//     header("Location: ../");
-// }
+if (!isset($_SESSION["login"])){
+    header("Location: ../");
+}
 ?>
 <html lang="en">
 <head>
@@ -16,35 +14,10 @@ session_start();
     <title>Open PPM | Consultants</title>
 </head>
 <body>
-<header class="menu">
-        <span class="menu-title">
-            Open PPM
-        </span>
-        <span class="menu-item">
-            Dashboard
-        </span>
-        <a href="/ppm/consultants/"><span class="menu-item">
-            Consultants
-        </span></a>
-        <span class="menu-item">
-            Customers
-        </span>
-        <span class="menu-item">
-            Projects
-        </span>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <span class="menu-avatar">
-                    <img src="../assets/images/avatar.svg" alt="Avatar"/>
-                </span>
-            </button>
-            <div class="dropdown-content">
-              <a href="#">Profile</a>
-              <a href="#">Settings</a>
-              <a href="<?php session_destroy(); ?>">Logout</a>
-            </div>
-          </div>          
-    </header>
+    <?php
+        include('../dashboard/navbar/menu.php');
+        navBar();
+    ?>
     <main>
         <div class="current-nav">
             Open PPM / Consultants

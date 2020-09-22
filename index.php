@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <?php
 session_start();
 if (isset($_SESSION["login"])){
     header("Location: ./dashboard");
 }
 ?>
-
+<!DOCTYPE html>
 <?php 
 if (isset($_POST['login'])) {
   include('./auth/index.php');
