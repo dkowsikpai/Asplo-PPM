@@ -74,7 +74,7 @@ body {
   }
   .menu .dropbtn {
     border: none;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
   }
   .menu .dropdown {
     position: absolute;
@@ -89,7 +89,7 @@ body {
   .menu .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     right: 0px;
     min-width: 160px;
     -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -101,6 +101,7 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    background-color: #ffffff;
   }
   .menu .dropdown-content a:hover {
     background-color: #999999;
@@ -123,6 +124,94 @@ body {
   }
   .flex-grid-div {
     font-size: 0.8rem;
+  }
+  .sidepanel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-height: 100vh;
+    z-index: 20;
+    background-color: #ffffff;
+    -webkit-box-shadow: -8px 0px 16px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: -8px 0px 16px 0px rgba(0, 0, 0, 0.2);
+    -webkit-transition: width 0.8s ease-in-out;
+    transition: width 0.8s ease-in-out;
+    overflow-y: hidden !important;
+  }
+  .sidepanel .sidepanel-close {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 5px;
+    -webkit-transition: width 0.8s ease-in-out;
+    transition: width 0.8s ease-in-out;
+  }
+  .sidepanel .sidepanel-close:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  .sidepanel .sidepanel-frame {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    min-width: 100%;
+    min-height: 100vh;
+    margin-top: 50px;
+  }
+  .sidepanel .sidepanel-contents {
+    width: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .sidepanel .sidepanel-contents .sidepanel-title {
+    font-size: 1.2rem;
+    padding: 20px 0;
+  }
+  .sidepanel .sidepanel-contents .sidepanel-input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b9b9b9;
+    border-radius: 3px;
+  }
+  .sidepanel .sidepanel-contents .sidepanel-input:focus {
+    border: 1px solid #1296ca;
+  }
+  .sidepanel .sidepanel-contents .sidepanel-button {
+    background: #1296ca;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    color: #f1f1f1;
+    font-weight: bold;
+    width: 50%;
+  }
+  .sidepanel .sidepanel-contents .sidepanel-button:hover {
+    background-color: #0d739b;
+  }
+  .hide {
+    width: 0;
+    visibility: hidden;
+    z-index: -100;
+  }
+  .show {
+    width: 50vw;
+    visibility: visible;
+    z-index: 2;
   }
 }
 

@@ -94,7 +94,7 @@ function test(com,grid)
     else if (com==='Add')
     {
         
-
+        $('#sidepanel_consultants').removeClass('hide').addClass('show');
 
     }
     else if (com==='Edit')
