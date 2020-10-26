@@ -1,0 +1,103 @@
+#popup_container {
+	font-family: "Lato", sans-serif;
+	font-size: 0.9rem;
+	min-width: 300px; /* Dialog will be no smaller than this */
+	max-width: 600px; /* Dialog will wrap after this width */
+	background: #FFF;
+    /* border: solid 1px #B4BFCA; */
+	box-shadow: rgba(50, 50, 50, .1) 1px 1px 1px 1px;
+  -moz-box-shadow: rgba(50, 50, 50, .1) 1px 1px 1px 1px;
+  -webkit-box-shadow: rgba(50, 50, 50, .1) 1px 1px 1px 1px;
+	color: #000;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 10px;
+}
+
+#popup_title {
+	font-size: 100%;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;
+	/* background: #04355c; */
+    color: #1f1f1f;
+	/* border: solid 1px #d0d0d0; */
+	cursor: default;
+	padding: 10px;
+	margin: 0;
+	height: 5vh;
+}
+
+#popup_content {
+	text-align: left;
+	/*background: 16px 16px no-repeat url('../images/alerts/info.gif');*/
+	background-color: #FFFFFF;
+	padding: 16px 26px;
+	margin: 0px;
+}
+
+#popup_message {
+	padding-left: 48px;
+}
+
+#popup_panel {
+	text-align: left;
+	float: left;
+	padding: 3px;
+	padding-bottom: 7px;
+	margin: 0px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	/* border-top: 1px solid #B4BFCA; */
+	border-radius:1px;
+	/* background: rgba(220, 220, 220);
+	background: rgba(220, 220, 220, .3); */
+}
+
+#popup_prompt {
+	margin: 8px 0px;
+}
+
+#popup_ok {
+	/* position:relative; */
+    width:50px;
+	height:30px;
+	font-weight: bold;
+	/* left:35%; */
+	background-color: rgb(41, 158, 255);
+	color: #fff;
+	border-color: transparent;
+	border-radius: 2px;
+	transform: translate(20px, 0);
+
+}
+
+#popup_cancel {
+	/* position:relative; */
+	width:80px;
+	height:30px;
+	font-weight: bold;
+	/* left:35%; */
+	background-color: rgb(41, 158, 255);
+	color: #fff;
+	border-color: transparent;
+	border-radius: 2px;
+	transform: translate(20px, 0);
+
+}
+
+.popup_panel {
+	position:relative; 
+    width:110px;
+    height:40px;
+	left:25%;
+}
+
+
+.popup_c_button {
+    position: absolute;
+	width:50px;
+    height:30px;
+}
+
+

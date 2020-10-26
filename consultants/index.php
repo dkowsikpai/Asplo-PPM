@@ -9,6 +9,7 @@ if (!isset($_SESSION["login"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../assets/css/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/css/jquery.alerts.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="../assets/flexgrid/flexigrid.css">
     <title>Open PPM | Consultants</title>
 
@@ -68,18 +69,13 @@ if (!isset($_SESSION["login"])){
     </main>
     <div class="sidepanel hide" id="sidepanel_consultants">
         <img src="../assets/images/close.png" class="sidepanel-close" onclick="close_sidepanel()"/>
-        <div class="sidepanel-frame">
-            <div class="sidepanel-contents">
-                <h3 class="sidepanel-title">Add Consultant</h3>
-                <input class="sidepanel-input" type="text" placeholder="Name" maxlength="200" id="consultant_name_add"/>
-                <input class="sidepanel-input" type="text" placeholder="Phone" maxlength="12" id="consultant_phone_add"/>
-                <input class="sidepanel-input" type="text" placeholder="Email" maxlength="200" id="consultant_email_add"/>
-                <button class="sidepanel-button">Submit</button>
-            </div>
+        <div class="sidepanel-frame" id="sidepanel_consultants_contents">
+            <!-- Add the contents to this frame -->
         </div>
     </div>
 </body>
 <script src="../assets/js/jquery.js" type="text/javascript"></script>
+<script src="../assets/js/jquery.alerts.js" type="text/javascript"></script>
 <script src="../assets/js/consultants.js" type="text/javascript"></script>
 <script type="text/javascript" src="../assets/flexgrid/flexigrid.js"></script>
 <script type="text/javascript">

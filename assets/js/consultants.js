@@ -94,6 +94,15 @@ function test(com,grid)
     else if (com==='Add')
     {
         
+        $('#sidepanel_consultants_contents').empty().html(
+            "<div class='sidepanel-contents'>" +
+                "<h3 class='sidepanel-title'>Add Consultant</h3>" +
+                "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='consultant_name_add'/>" +
+                "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='consultant_phone_add'/>" +
+                "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='consultant_email_add'/>" +
+                "<button class='sidepanel-button'>Submit</button>" +
+            "</div>"
+        );
         $('#sidepanel_consultants').removeClass('hide').addClass('show');
 
     }
@@ -111,7 +120,16 @@ function test(com,grid)
 
 
             
-
+            $('#sidepanel_consultants_contents').empty().html(
+                "<div class='sidepanel-contents'>" +
+                    "<h3 class='sidepanel-title'>Edit Consultant</h3>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='consultant_name_add'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='consultant_phone_add'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='consultant_email_add'/>" +
+                    "<button class='sidepanel-button'>Submit</button>" +
+                "</div>"
+            );
+            $('#sidepanel_consultants').removeClass('hide').addClass('show');
         } else {
             jAlert("Select one item", "E");
         }
