@@ -10,10 +10,8 @@ function userAuthertication($uname, $pword, $conn) {
     $enc_password = hash('sha512', $pword);
     // echo $enc_password;
     $sql = "SELECT ID FROM Users WHERE username='$uname' AND password='$enc_password' AND active=TRUE";
-    $q = $conn->query($sql);
-    $result = $q->fetch();
-    // echo $result->error;
-    if ($result) {
+    $q = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($q) > 0) {
         return true;
     } else {
         return false;

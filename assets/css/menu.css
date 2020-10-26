@@ -10,6 +10,10 @@ a {
   color: inherit;
 }
 
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 .current-nav {
   font-family: "Montserrat", sans-serif;
   font-size: 0.8rem;
@@ -70,7 +74,7 @@ a {
   }
   .menu .dropbtn {
     border: none;
-    background-color: transparent;
+    background-color: #f1f1f1;
   }
   .menu .dropdown {
     position: absolute;
@@ -85,11 +89,12 @@ a {
   .menu .dropdown-content {
     display: none;
     position: absolute;
+    background-color: #f1f1f1;
     right: 0px;
     min-width: 160px;
     -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 2;
   }
   .menu .dropdown-content a {
     color: black;
@@ -115,6 +120,9 @@ a {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  .flex-grid-div {
+    font-size: 0.8rem;
   }
 }
 

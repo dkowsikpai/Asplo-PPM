@@ -64,7 +64,7 @@ if (!isset($_SESSION["login"])){
         </div>
         <div class="grid">
             
-            <table id="consultant_flex" style="display:none"></table>
+            <table class="flex-grid-div" id="consultant_flex" style="display:none"></table>
 
 
         </div>

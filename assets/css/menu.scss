@@ -10,6 +10,10 @@ a {
     color: inherit;
 }
 
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
 .current-nav {
     font-family: "Montserrat", sans-serif;
     font-size: 0.8rem;
@@ -106,6 +110,10 @@ a {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .flex-grid-div {
+        font-size: 0.8rem;
     }
 }
 
