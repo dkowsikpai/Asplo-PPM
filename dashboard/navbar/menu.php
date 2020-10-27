@@ -11,9 +11,9 @@ function navBar (){
         <a href="../consultants/"><span class="menu-item">
             Consultants
         </span></a>
-        <span class="menu-item">
+        <a href="../customers/"><span class="menu-item">
             Customers
-        </span>
+        </span></a>
         <span class="menu-item">
             Projects
         </span>
