@@ -8,7 +8,7 @@ $(document).ready(function() {
                 {display: 'Name', name : 'name', width : 250, sortable : true, align: 'left'},
                 {display: 'Phone', name : 'phone', width : 150, sortable : true, align: 'left'},
                 {display: 'Email', name : 'email', width : 250, sortable : true, align: 'left'},
-                {display: 'Designation', name : 'designation', width : 100, sortable : true, align: 'left'},
+                {display: 'Designation', name : 'designation', width : 200, sortable : true, align: 'left'},
                 {display: 'Present Address', name : 'presentAddress', width : 500, sortable : false, align: 'left'},
                 {display: 'Permanent Address', name : 'pAddress', width : 500, sortable : false, align: 'left', hide: true},
                 {display: 'Experience', name : 'experience', width : 200, sortable : false, align: 'left', hide: true},

@@ -39,11 +39,22 @@ if (isset($_POST['sortorder'])) {
     $sortOrder = 'asc';
 }
 
-$query = isset($_POST['query']) ? $_POST['query'] : false;
-$qtype = isset($_POST['qtype']) ? $_POST['qtype'] : false;
+if (isset($_POST['query']) || $_POST['query'] = "") {
+    $query = $_POST['query'];
+}
 
+if (isset($_POST['qtype']) || $_POST['qtype'] = "") {
+    $qtype = $_POST['qtype'];
+}
 
-$sql = "SELECT * FROM Consultants ORDER BY ".$sortName." ".$sortOrder." LIMIT ". $page*$rp;
+if($query!=''){
+    if ($qtype == 'designation') $qtype = "Designations.designation";
+    $where = "WHERE ".$qtype." LIKE '%".$query."%'";
+} else {
+    $where ='WHERE 1';
+}
+
+$sql = "SELECT Consultants.ID, name, phone, email, presentAddress, pAddress, Designations.designation, highest_edu, experience FROM Consultants JOIN Designations ON Consultants.designation = Designations.ID ".$where." ORDER BY ".$sortName." ".$sortOrder." LIMIT ". $page*$rp;
 // echo $sql;
 $sqlTot = "SELECT COUNT(*) AS total FROM Consultants";
 $totalq = mysqli_query($conn, $sqlTot);
