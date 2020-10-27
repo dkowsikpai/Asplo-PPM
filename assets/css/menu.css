@@ -203,6 +203,20 @@ body {
   .sidepanel .sidepanel-contents .sidepanel-button:hover {
     background-color: #0d739b;
   }
+  .sidepanel .sidepanel-contents .sidepanel-label {
+    color: #242424;
+    font-size: 0.8rem;
+    padding: 5px 0 5px 0;
+  }
+  .sidepanel .sidepanel-contents .sidepanel-select {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b9b9b9;
+    border-radius: 3px;
+  }
+  .sidepanel .sidepanel-contents .sidepanel-select:focus {
+    border: 1px solid #1296ca;
+  }
   .hide {
     width: 0;
     visibility: hidden;

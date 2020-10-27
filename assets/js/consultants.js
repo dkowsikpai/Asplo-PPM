@@ -1,74 +1,67 @@
+let designationList = "<option disabled selected value> -- select an option -- </option>";
 $(document).ready(function() {
-    $("#consultant_flex").flexigrid
-    ({
-            url: 'consultants.php',
-            dataType: 'json',
-            colModel : [
-                {display: 'ID', name : 'id', width : 80, sortable : true, align: 'center', hide: true},
-                {display: 'Name', name : 'name', width : 250, sortable : true, align: 'left'},
-                {display: 'Phone', name : 'phone', width : 150, sortable : true, align: 'left'},
-                {display: 'Email', name : 'email', width : 250, sortable : true, align: 'left'},
-                {display: 'Designation', name : 'designation', width : 200, sortable : true, align: 'left'},
-                {display: 'Present Address', name : 'presentAddress', width : 500, sortable : false, align: 'left'},
-                {display: 'Permanent Address', name : 'pAddress', width : 500, sortable : false, align: 'left', hide: true},
-                {display: 'Experience', name : 'experience', width : 200, sortable : false, align: 'left', hide: true},
-                {display: 'Highest Education Qualification', name : 'highest_edu', width : 300, sortable : false, align: 'left', hide: true},
-            ],
-            buttons : [
-                {name: 'Add', bclass: 'add', onpress : test},
-                {name: 'Edit', bclass: 'edit', onpress : test},
-                {name: 'Delete', bclass: 'delete', onpress : test},
-                {separator: true}
-            ],
-            searchitems : [
-                {display: 'Name', name : 'name', isdefault: true},
-                {display: 'Phone', name : 'phone'},
-                {display: 'Email', name : 'email'},
-                {display: 'Designation', name : 'designation'},
-                {display: 'Present Address', name : 'presentAddress'},
-                {display: 'Permanent Address', name : 'pAddress'},
-            ],
-            sortname: "name",
-            sortorder: "asc",
-            usepager: true,
-            title: 'Consultants',
-            useRp: true,
-            rp: 15,
-            showTableToggleBtn: false,
-            width: 800,
-            height: 400,
-            singleSelect: true
+    $.ajax({
+        url: 'designation_list.php',
+        type: "POST",
+        error: (e)=>{
+            console.error(e);
+        },
+        success: (response)=>{
+            // Prepare  the list of designation of dropdown
+            response.forEach(item =>{ // Append the value and option name
+                designationList += `<option value="${item.id}">${item.designation}</option>`;
+            });
+            console.log(designationList);
 
+            $("#consultant_flex").flexigrid
+            ({
+                    url: 'consultants.php',
+                    dataType: 'json',
+                    colModel : [
+                        {display: 'ID', name : 'id', width : 80, sortable : true, align: 'center', hide: true},
+                        {display: 'Name', name : 'name', width : 250, sortable : true, align: 'left'},
+                        {display: 'Phone', name : 'phone', width : 150, sortable : true, align: 'left'},
+                        {display: 'Email', name : 'email', width : 250, sortable : true, align: 'left'},
+                        {display: 'Designation', name : 'designation', width : 200, sortable : true, align: 'left'},
+                        {display: 'Present Address', name : 'presentAddress', width : 500, sortable : false, align: 'left'},
+                        {display: 'Permanent Address', name : 'pAddress', width : 500, sortable : false, align: 'left', hide: true},
+                        {display: 'Experience', name : 'experience', width : 200, sortable : false, align: 'left', hide: true},
+                        {display: 'Highest Education Qualification', name : 'highest_edu', width : 300, sortable : false, align: 'left', hide: true},
+                    ],
+                    buttons : [
+                        {name: 'Add', bclass: 'add', onpress : test},
+                        {name: 'Edit', bclass: 'edit', onpress : test},
+                        {name: 'Delete', bclass: 'delete', onpress : test},
+                        {separator: true}
+                    ],
+                    searchitems : [
+                        {display: 'Name', name : 'name', isdefault: true},
+                        {display: 'Phone', name : 'phone'},
+                        {display: 'Email', name : 'email'},
+                        {display: 'Designation', name : 'designation'},
+                        {display: 'Present Address', name : 'presentAddress'},
+                        {display: 'Permanent Address', name : 'pAddress'},
+                    ],
+                    sortname: "name",
+                    sortorder: "asc",
+                    usepager: true,
+                    title: 'Consultants',
+                    useRp: true,
+                    rp: 15,
+                    showTableToggleBtn: false,
+                    width: 800,
+                    height: 400,
+                    singleSelect: true
+
+                }
+            );
         }
-    );
+    });
 });
 
 function test(com,grid)
 {
-    if (com==='Enable/Disable Offer')
-    {
-        // confirm('Delete ' + $('.trSelected',grid).length + ' items?')
-
-        if ($('.trSelected',grid).length>0) {
-            jConfirm('<b> Confirm to perform action </b>', '', function(user_act) {
-                if (user_act) {
-
-                    if ($('.trSelected',grid).length>0) {
-
-                        var items = $('.trSelected', grid);
-                        var itemlist = items[0].id.substr(3);
-                        // alert(itemlist);
-                        
-                    }
-                } else {
-                    return false;
-                }
-            });
-        } else {
-            jAlert('Record Not Selected!', 'E');
-        }
-    }
-    else if (com==='Delete')
+    if (com==='Delete')
     {
         // confirm('Delete ' + $('.trSelected',grid).length + ' items?')
 
@@ -100,9 +93,16 @@ function test(com,grid)
                 "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='consultant_name_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='consultant_phone_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='consultant_email_add'/>" +
-                "<button class='sidepanel-button'>Submit</button>" +
+                "<input class='sidepanel-input' type='text' placeholder='Experience' maxlength='200' id='consultant_experience_add'/>" +
+                "<input class='sidepanel-input' type='text' placeholder='Highest Educational Qualification' maxlength='200' id='consultant_edu_add'/>" +
+                "<input class='sidepanel-input' type='text' placeholder='Present Address' maxlength='300' id='consultant_presentAddress_add'/>" +
+                "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='consultant_pAddress_add'/>" +
+                "<label class='sidepanel-label' for='consultant_designation_add'>Designation:</label><br/>" +
+                "<select class='sidepanel-select' id='consultant_designation_add'></select>" +
+                "<button class='sidepanel-button' onclick='submit_new_consultant()'>Submit</button>" +
             "</div>"
         );
+        $('#consultant_designation_add').append(designationList);
         $('#sidepanel_consultants').removeClass('hide').addClass('show');
 
     }
@@ -123,12 +123,19 @@ function test(com,grid)
             $('#sidepanel_consultants_contents').empty().html(
                 "<div class='sidepanel-contents'>" +
                     "<h3 class='sidepanel-title'>Edit Consultant</h3>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='consultant_name_add'/>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='consultant_phone_add'/>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='consultant_email_add'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='consultant_name_edit'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='consultant_phone_edit'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='consultant_email_edit'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Experience' maxlength='200' id='consultant_experience_edit'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Highest Educational Qualification' maxlength='200' id='consultant_edu_edit'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Present Address' maxlength='300' id='consultant_presentAddress_edit'/>" +
+                    "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='consultant_pAddress_edit'/>" +
+                    "<label class='sidepanel-label' for='consultant_designation_edit'>Designation:</label><br/>" +
+                    "<select class='sidepanel-select' id='consultant_designation_edit'></select>" +
                     "<button class='sidepanel-button'>Submit</button>" +
                 "</div>"
             );
+            $('#consultant_designation_edit').append(designationList);
             $('#sidepanel_consultants').removeClass('hide').addClass('show');
         } else {
             jAlert("Select one item", "E");
@@ -136,134 +143,40 @@ function test(com,grid)
     }
 }
 
+function submit_new_consultant(){
+    let name = $('#consultant_name_add').val();
+    let phone = $('#consultant_phone_add').val();
+    let email = $('#consultant_email_add').val();
+    let exp = $('#consultant_experience_add').val();
+    let edu = $('#consultant_edu_add').val();
+    let presentAddr = $('#consultant_presentAddress_add').val();
+    let pAddr = $('#consultant_pAddress_add').val();
 
-
-
-// insertItem: function(item) {
-            //     return $.ajax({
-            //         type: "POST",
-            //         url: "./clients/",
-            //         data: item
-            //     });
-            // },
-            // updateItem: function(item) {
-            //     return $.ajax({
-            //         type: "PUT",
-            //         url: "./clients/",
-            //         data: item
-            //     });
-            // },
-            // deleteItem: function(item) {
-            //     return $.ajax({
-            //         type: "DELETE",
-            //         url: "./clients/",
-            //         data: item
-            //     });
-            // }
-
-
-
-
-            /*
-            
-            
-            
-            $.ajax({
-      type
+    $.ajax({
+        url: 'add_new_consultant.php',
+        type: 'POST',
+        data: {
+            name: name,
+            phone: phone,
+            email: email,
+            experience: exp,
+            edu: edu,
+            presentAddr: presentAddr,
+            pAddr: pAddr
+        },
+        error: (e)=>{
+            console.error(e);
+        },
+        success: (response)=>{
+            if (response.success) {
+                jAlert(response.message, "S");
+                // Flex Reload
+            } else {
+                jAlert(response.message, "E");
+            }
+        }
     });
 
 
+}
 
-    // let data = [
-    //     {
-    //       "id": "1",
-    //       "name": "Petey Cruiser",
-    //       "phone": "410763981007",
-    //       "presentAddress": "405 Fulton Court Attleboro, MA 02703"
-    //     },
-    //     {
-    //       "id": "2",
-    //       "name": "Anna Sthesia",
-    //       "phone": "10105525611",
-    //       "presentAddress": "47 Glenridge St.\r\nHuntersville, NC 28078"
-    //     },
-    //     {
-    //       "id": "3",
-    //       "name": "Paul Molive",
-    //       "phone": "6011377914",
-    //       "presentAddress": "945 Mill Street\r\nParlin, NJ 08859"
-    //     },
-    //     {
-    //       "id": "4",
-    //       "name": "Anna Mull",
-    //       "phone": "7901584026",
-    //       "presentAddress": "613 East Clay Lane\r\nPalatine, IL 60067"
-    //     },
-    //     {
-    //       "id": "5",
-    //       "name": "Gail Forcewind",
-    //       "phone": "1594941628",
-    //       "presentAddress": "479 Thorne St.\r\nSaint Joseph, MI 49085"
-    //     },
-    //     {
-    //       "id": "6",
-    //       "name": "Paige Turner",
-    //       "phone": "0148042499",
-    //       "presentAddress": "128 Hillside St.\r\nBismarck, ND 58501"
-    //     },
-    //     {
-    //       "id": "7",
-    //       "name": "Walter Melon",
-    //       "phone": "1171089059",
-    //       "presentAddress": "7990 Lakewood Dr.\r\nPlainfield, NJ 07060"
-    //     },
-    //     {
-    //       "id": "8",
-    //       "name": "Nick R. Bocker",
-    //       "phone": "5779877107",
-    //       "presentAddress": "7555 NW. Gulf Drive\r\nJamaica, NY 11432"
-    //     },
-    //     {
-    //       "id": "9",
-    //       "name": "Barb Ackue",
-    //       "phone": "9646946767",
-    //       "presentAddress": "478 South Crescent Street\r\nBergenfield, NJ 07621"
-    //     }
-    //   ];
-    $("#jsGrid").jsGrid({
-        height: "100%",
-        width: "100%",
-        filtering: true,
-        // inserting: true,
-        // editing: true,
-        // sorting: true,
-        paging: true,
-        autoload: true,
-        pageSize: 10,
-        pageButtonCount: 5,
-        deleteConfirm: "Do you really want to delete client?",
-        data: data,
-        // controller: {
-        //     loadData: function(filter) {
-        //         return $.ajax({
-        //             type: "GET",
-        //             url: "./consultants.php",
-        //             data: filter
-        //         });
-        //     },
-            
-        // },
-        fields: [
-            // { name: "ID", title: "ID", type: "text", width: 150},
-            { name: "name", title: "Name", type: "text", width: 150 },
-            { name: "phone", title: "Phone", type: "text", width: 50 }, // , filtering: false // If it is false then the GET won't be sent
-            { name: "presentAddress", title: "Address", type: "text", width: 200 },
-            // { name: "country_id", title: "Country", type: "select", width: 100, items: countries, valueField: "id", textField: "name" },
-            // { name: "married", type: "checkbox", title: "Is Married", sorting: false, filtering: false },
-            { type: "control" }
-        ]
-    });
-            
-            
-            
-            */
