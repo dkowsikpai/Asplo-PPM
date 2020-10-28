@@ -16,5 +16,5 @@ if (mysqli_num_rows($result) > 0) {
 
 header("Content-Type: application/json");
 echo json_encode($data);
-
+mysqli_close($conn);
 ?>
