@@ -72,7 +72,7 @@ function Customer_Grid_Actions(com,grid)
                 "<h3 class='sidepanel-title'>Add Customer</h3>" +
                 "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='customer_name_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='customer_phone_add'/>" +
-                "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='customer_email_add'/>" +
+                "<input class='sidepanel-input' type='email' placeholder='Email' maxlength='200' id='customer_email_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Fax' maxlength='12' id='customer_fax_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='customer_pAddress_add'/>" +
                 "<button class='sidepanel-button'>Submit</button>" +
@@ -98,9 +98,10 @@ function Customer_Grid_Actions(com,grid)
             $('#sidepanel_customers_contents').empty().html(
                 "<div class='sidepanel-contents'>" +
                     "<h3 class='sidepanel-title'>Edit Customer</h3>" +
+                    "<input type='hidden' placeholder='ID' maxlength='200' id='customer_id_edit'/>" +
                     "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='customer_name_edit'/>" +
                     "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='customer_phone_edit'/>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='customer_email_edit'/>" +
+                    "<input class='sidepanel-input' type='email' placeholder='Email' maxlength='200' id='customer_email_edit'/>" +
                     "<input class='sidepanel-input' type='text' placeholder='Fax' maxlength='12' id='customer_fax_edit'/>" +
                     "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='customer_pAddress_edit'/>" +
                     "<button class='sidepanel-button'>Submit</button>" +
