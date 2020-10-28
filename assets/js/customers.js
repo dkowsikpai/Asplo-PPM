@@ -54,6 +54,26 @@ function Customer_Grid_Actions(com,grid)
                         var items = $('.trSelected', grid);
                         var itemlist = items[0].id.substr(3);
                         // alert(itemlist);
+
+                        $.ajax({
+                            url: 'delete_customer.php',
+                            type: 'POST',
+                            data: {
+                                id: itemlist
+                            },
+                            error: (e)=>{
+                                console.error(e);
+                            },
+                            success: (response)=>{
+                                if (response.success) {
+                                    jAlert(response.message, "S");
+                                    // Flex Reload
+                                    $('#customer_flex').flexReload();
+                                } else {
+                                    jAlert(response.message, "E");
+                                }
+                            }
+                        });
                         
                     }
                 } else {
@@ -75,7 +95,7 @@ function Customer_Grid_Actions(com,grid)
                 "<input class='sidepanel-input' type='email' placeholder='Email' maxlength='200' id='customer_email_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Fax' maxlength='12' id='customer_fax_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='customer_pAddress_add'/>" +
-                "<button class='sidepanel-button'>Submit</button>" +
+                "<button class='sidepanel-button' onclick='submit_new_customer()'>Submit</button>" +
             "</div>"
         );
         $('#sidepanel_customers').removeClass('hide').addClass('show');
@@ -92,22 +112,44 @@ function Customer_Grid_Actions(com,grid)
             var itemlist = items[0].id.substr(3);
             // alert(itemlist);
 
-
+            $.ajax({
+                url: 'get_edit_details_customer.php',
+                type: 'POST',
+                data: {
+                    id: itemlist,
+                },
+                error: (e)=>{
+                    console.log(e);
+                },
+                success: (response)=>{
+                    if (response.success){
+                        $('#sidepanel_customers_contents').empty().html(
+                            "<div class='sidepanel-contents'>" +
+                                "<h3 class='sidepanel-title'>Edit Customer</h3>" +
+                                "<input type='hidden' placeholder='ID' maxlength='200' id='customer_id_edit'/>" +
+                                "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='customer_name_edit'/>" +
+                                "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='customer_phone_edit'/>" +
+                                "<input class='sidepanel-input' type='email' placeholder='Email' maxlength='200' id='customer_email_edit'/>" +
+                                "<input class='sidepanel-input' type='text' placeholder='Fax' maxlength='12' id='customer_fax_edit'/>" +
+                                "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='customer_pAddress_edit'/>" +
+                                "<button class='sidepanel-button'  onclick='submit_edit_customer()'>Submit</button>" +
+                            "</div>"
+                        );
+                        
+                        // Set Data
+                        $('#customer_id_edit').val(response.data.id);
+                        $('#customer_name_edit').val(response.data.name);
+                        $('#customer_phone_edit').val(response.data.phone);
+                        $('#customer_email_edit').val(response.data.email);
+                        $('#customer_fax_edit').val(response.data.fax);
+                        $('#customer_pAddress_edit').val(response.data.pAddress);
+                        $('#sidepanel_customers').removeClass('hide').addClass('show');
+                    }
+                }
+            });
 
             
-            $('#sidepanel_customers_contents').empty().html(
-                "<div class='sidepanel-contents'>" +
-                    "<h3 class='sidepanel-title'>Edit Customer</h3>" +
-                    "<input type='hidden' placeholder='ID' maxlength='200' id='customer_id_edit'/>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='customer_name_edit'/>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='customer_phone_edit'/>" +
-                    "<input class='sidepanel-input' type='email' placeholder='Email' maxlength='200' id='customer_email_edit'/>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Fax' maxlength='12' id='customer_fax_edit'/>" +
-                    "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='customer_pAddress_edit'/>" +
-                    "<button class='sidepanel-button'>Submit</button>" +
-                "</div>"
-            );
-            $('#sidepanel_customers').removeClass('hide').addClass('show');
+            
         } else {
             jAlert("Select one item", "E");
         }
@@ -117,131 +159,75 @@ function Customer_Grid_Actions(com,grid)
 
 
 
-// insertItem: function(item) {
-            //     return $.ajax({
-            //         type: "POST",
-            //         url: "./clients/",
-            //         data: item
-            //     });
-            // },
-            // updateItem: function(item) {
-            //     return $.ajax({
-            //         type: "PUT",
-            //         url: "./clients/",
-            //         data: item
-            //     });
-            // },
-            // deleteItem: function(item) {
-            //     return $.ajax({
-            //         type: "DELETE",
-            //         url: "./clients/",
-            //         data: item
-            //     });
-            // }
+function submit_new_customer(){
+    let name = $('#customer_name_add').val();
+    let phone = $('#customer_phone_add').val();
+    let email = $('#customer_email_add').val();
+    let fax = $('#customer_fax_add').val();
+    let pAddr = $('#customer_pAddress_add').val();
 
-
-
-
-            /*
-            
-            
-            
-            $.ajax({
-      type
+    $.ajax({
+        url: 'add_new_customer.php',
+        type: 'POST',
+        data: {
+            name: name,
+            phone: phone,
+            email: email,
+            fax: fax,
+            pAddr: pAddr
+        },
+        error: (e)=>{
+            console.error(e);
+        },
+        success: (response)=>{
+            if (response.success) {
+                jAlert(response.message, "S");
+                // Flex Reload
+                $('#customer_flex').flexReload();
+                $('#sidepanel_customers').removeClass('show').addClass('hide');
+            } else {
+                jAlert(response.message, "E");
+            }
+        }
     });
 
 
+}
 
-    // let data = [
-    //     {
-    //       "id": "1",
-    //       "name": "Petey Cruiser",
-    //       "phone": "410763981007",
-    //       "presentAddress": "405 Fulton Court Attleboro, MA 02703"
-    //     },
-    //     {
-    //       "id": "2",
-    //       "name": "Anna Sthesia",
-    //       "phone": "10105525611",
-    //       "presentAddress": "47 Glenridge St.\r\nHuntersville, NC 28078"
-    //     },
-    //     {
-    //       "id": "3",
-    //       "name": "Paul Molive",
-    //       "phone": "6011377914",
-    //       "presentAddress": "945 Mill Street\r\nParlin, NJ 08859"
-    //     },
-    //     {
-    //       "id": "4",
-    //       "name": "Anna Mull",
-    //       "phone": "7901584026",
-    //       "presentAddress": "613 East Clay Lane\r\nPalatine, IL 60067"
-    //     },
-    //     {
-    //       "id": "5",
-    //       "name": "Gail Forcewind",
-    //       "phone": "1594941628",
-    //       "presentAddress": "479 Thorne St.\r\nSaint Joseph, MI 49085"
-    //     },
-    //     {
-    //       "id": "6",
-    //       "name": "Paige Turner",
-    //       "phone": "0148042499",
-    //       "presentAddress": "128 Hillside St.\r\nBismarck, ND 58501"
-    //     },
-    //     {
-    //       "id": "7",
-    //       "name": "Walter Melon",
-    //       "phone": "1171089059",
-    //       "presentAddress": "7990 Lakewood Dr.\r\nPlainfield, NJ 07060"
-    //     },
-    //     {
-    //       "id": "8",
-    //       "name": "Nick R. Bocker",
-    //       "phone": "5779877107",
-    //       "presentAddress": "7555 NW. Gulf Drive\r\nJamaica, NY 11432"
-    //     },
-    //     {
-    //       "id": "9",
-    //       "name": "Barb Ackue",
-    //       "phone": "9646946767",
-    //       "presentAddress": "478 South Crescent Street\r\nBergenfield, NJ 07621"
-    //     }
-    //   ];
-    $("#jsGrid").jsGrid({
-        height: "100%",
-        width: "100%",
-        filtering: true,
-        // inserting: true,
-        // editing: true,
-        // sorting: true,
-        paging: true,
-        autoload: true,
-        pageSize: 10,
-        pageButtonCount: 5,
-        deleteConfirm: "Do you really want to delete client?",
-        data: data,
-        // controller: {
-        //     loadData: function(filter) {
-        //         return $.ajax({
-        //             type: "GET",
-        //             url: "./consultants.php",
-        //             data: filter
-        //         });
-        //     },
-            
-        // },
-        fields: [
-            // { name: "ID", title: "ID", type: "text", width: 150},
-            { name: "name", title: "Name", type: "text", width: 150 },
-            { name: "phone", title: "Phone", type: "text", width: 50 }, // , filtering: false // If it is false then the GET won't be sent
-            { name: "presentAddress", title: "Address", type: "text", width: 200 },
-            // { name: "country_id", title: "Country", type: "select", width: 100, items: countries, valueField: "id", textField: "name" },
-            // { name: "married", type: "checkbox", title: "Is Married", sorting: false, filtering: false },
-            { type: "control" }
-        ]
+function submit_edit_customer(){
+    let id = $('#customer_id_edit').val();
+    let name = $('#customer_name_edit').val();
+    let phone = $('#customer_phone_edit').val();
+    let email = $('#customer_email_edit').val();
+    let fax = $('#customer_fax_edit').val();
+    let pAddr = $('#customer_pAddress_edit').val();
+
+    $.ajax({
+        url: 'edit_customer.php',
+        type: 'POST',
+        data: {
+            id: id,
+            name: name,
+            phone: phone,
+            email: email,
+            fax: fax,
+            pAddr: pAddr
+        },
+        error: (e)=>{
+            console.error(e);
+        },
+        success: (response)=>{
+            if (response.success) {
+                jAlert(response.message, "S");
+                // Flex Reload
+                $('#customer_flex').flexReload();
+                $('#sidepanel_customers').removeClass('show').addClass('hide');
+            } else {
+                jAlert(response.message, "E");
+            }
+        }
     });
-            
-            
-            
-            */
+
+
+}
+
