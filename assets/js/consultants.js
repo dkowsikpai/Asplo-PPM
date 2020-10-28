@@ -74,6 +74,25 @@ function test(com,grid)
                         var items = $('.trSelected', grid);
                         var itemlist = items[0].id.substr(3);
                         // alert(itemlist);
+                        $.ajax({
+                            url: 'delete_consultant.php',
+                            type: 'POST',
+                            data: {
+                                id: itemlist
+                            },
+                            error: (e)=>{
+                                console.error(e);
+                            },
+                            success: (response)=>{
+                                if (response.success) {
+                                    jAlert(response.message, "S");
+                                    // Flex Reload
+                                    $('#consultant_flex').flexReload();
+                                } else {
+                                    jAlert(response.message, "E");
+                                }
+                            }
+                        });
                         
                     }
                 } else {
