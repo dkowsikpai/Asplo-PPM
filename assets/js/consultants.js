@@ -92,8 +92,8 @@ function test(com,grid)
                 "<h3 class='sidepanel-title'>Add Consultant</h3>" +
                 "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='consultant_name_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='consultant_phone_add'/>" +
-                "<input class='sidepanel-input' type='text' placeholder='Email' maxlength='200' id='consultant_email_add'/>" +
-                "<input class='sidepanel-input' type='text' placeholder='Experience' maxlength='200' id='consultant_experience_add'/>" +
+                "<input class='sidepanel-input' type='email' placeholder='Email' maxlength='200' id='consultant_email_add'/>" +
+                "<input class='sidepanel-input' type='number' placeholder='Experience' maxlength='200' id='consultant_experience_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Highest Educational Qualification' maxlength='200' id='consultant_edu_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Present Address' maxlength='300' id='consultant_presentAddress_add'/>" +
                 "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='consultant_pAddress_add'/>" +
@@ -151,6 +151,7 @@ function submit_new_consultant(){
     let edu = $('#consultant_edu_add').val();
     let presentAddr = $('#consultant_presentAddress_add').val();
     let pAddr = $('#consultant_pAddress_add').val();
+    let desig = $('#consultant_designation_add').val();
 
     $.ajax({
         url: 'add_new_consultant.php',
@@ -162,7 +163,8 @@ function submit_new_consultant(){
             experience: exp,
             edu: edu,
             presentAddr: presentAddr,
-            pAddr: pAddr
+            pAddr: pAddr,
+            desig: desig
         },
         error: (e)=>{
             console.error(e);
@@ -171,6 +173,8 @@ function submit_new_consultant(){
             if (response.success) {
                 jAlert(response.message, "S");
                 // Flex Reload
+                $('#consultant_flex').flexReload();
+                $('#sidepanel_consultants').removeClass('show').addClass('hide');
             } else {
                 jAlert(response.message, "E");
             }
