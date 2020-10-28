@@ -97,4 +97,5 @@ $json_data = array(
 
 header("Content-Type: application/json");
 echo json_encode($json_data);
+mysqli_close($conn);
 ?>
