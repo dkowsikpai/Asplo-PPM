@@ -1,6 +1,6 @@
 <?php
 function connection(){
-    $servername = "localhost";
+    $servername = "localh ost";
     $username = "dinesh";
     $password = "a";
     $dbname = "ppm";
