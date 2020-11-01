@@ -31,6 +31,7 @@ if (mysqli_num_rows($result) > 0){
 }
 header("Content-Type: application/json");
 echo json_encode($json_data);
+mysqli_close($conn);
 /*
 Send Format:
 
