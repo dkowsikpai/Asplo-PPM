@@ -111,6 +111,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 100px;
     }
 
     .flex-grid-div {
@@ -230,6 +231,12 @@ body {
         visibility: visible;
         z-index: 2;
     }
+
+    // Temp
+
+    .mob-menu{
+        display: none;     
+    }
 }
 
 // ============================================================================
@@ -237,6 +244,55 @@ body {
 @media screen and (max-width: 800px){
     .menu {
         display: none;
+    }
+
+    .mob-menu{
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        min-width: 500px;
+        min-height: 72px;
+        z-index: 100;
+        transform: translateX(-50%);
+        background-color: #ffffff;
+        border-radius: 50px;
+        box-shadow: 2px 2px 16px 0 #707070;
+
+        .mob-menu-item {
+
+            margin: 0 20px;
+            cursor: pointer;
+            transition: width 0.8s ease-in-out;
+            .mob-menu-item-img{
+                padding: 0 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .mob-menu-img {
+                    height: 32px;
+                    width: 32px;
+                }
+                .mob-menu-item-subtitle{
+                    margin-top: 3px;
+                    font-size: 0.6rem;
+                    color: #9c9c9c;
+                }
+            }
+        }        
+    }
+
+    .grid {
+        min-width: 100vw;
+        // height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 100px;
     }
 
     .sidepanel {

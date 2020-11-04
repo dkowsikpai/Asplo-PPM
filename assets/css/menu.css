@@ -121,6 +121,7 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    margin-bottom: 100px;
   }
   .flex-grid-div {
     font-size: 0.8rem;
@@ -230,11 +231,86 @@ body {
     visibility: visible;
     z-index: 2;
   }
+  .mob-menu {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .menu {
     display: none;
+  }
+  .mob-menu {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-width: 500px;
+    min-height: 72px;
+    z-index: 100;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    background-color: #ffffff;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 2px 16px 0 #707070;
+            box-shadow: 2px 2px 16px 0 #707070;
+  }
+  .mob-menu .mob-menu-item {
+    margin: 0 20px;
+    cursor: pointer;
+    -webkit-transition: width 0.8s ease-in-out;
+    transition: width 0.8s ease-in-out;
+  }
+  .mob-menu .mob-menu-item .mob-menu-item-img {
+    padding: 0 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .mob-menu .mob-menu-item .mob-menu-item-img .mob-menu-img {
+    height: 32px;
+    width: 32px;
+  }
+  .mob-menu .mob-menu-item .mob-menu-item-img .mob-menu-item-subtitle {
+    margin-top: 3px;
+    font-size: 0.6rem;
+    color: #9c9c9c;
+  }
+  .grid {
+    min-width: 100vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 100px;
   }
   .sidepanel {
     position: absolute;
