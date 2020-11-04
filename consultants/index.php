@@ -31,26 +31,10 @@ if (!isset($_SESSION["login"])){
         }
         
     
-    .flexigrid div.fbutton .category
-        {
-            background: url("../assets/flexgrid/images/category.png") no-repeat center left;
-        }
-
-    .flexigrid div.fbutton .offer
+    .flexigrid div.fbutton .designation
     {
-        background: url("../assets/flexgrid/images/offer.png") no-repeat center left;
-    }
-
-    .flexigrid div.fbutton .offer-settings
-    {
-        background: url("../assets/flexgrid/images/offer_settings.png") no-repeat center left;
-    }
-
-    .flexigrid div.fbutton .offer-filter
-    {
-        background: url("../assets/flexgrid/images/filter.png") no-repeat center left;
-    }
-        
+        background: url("../assets/images/Consultants/designation.png") no-repeat center left;
+    }   
 
 </style>
 </head>
@@ -73,14 +57,26 @@ if (!isset($_SESSION["login"])){
             <!-- Add the contents to this frame -->
         </div>
     </div>
+
+    <div class="sidepanel second hide" id="sidepanel_second_consultants">
+        <img src="../assets/images/close.png" class="sidepanel-close" onclick="close_sidepanel_second()"/>
+        <div class="sidepanel-frame" id="sidepanel_consultants_contents">
+            <!-- Add the contents to this frame -->
+        </div>
+    </div>
 </body>
 <script src="../assets/js/jquery.js" type="text/javascript"></script>
 <script src="../assets/js/jquery.alerts.js" type="text/javascript"></script>
+<script src="../assets/js/designation.js" type="text/javascript"></script>
 <script src="../assets/js/consultants.js" type="text/javascript"></script>
 <script type="text/javascript" src="../assets/flexgrid/flexigrid.js"></script>
 <script type="text/javascript">
 function close_sidepanel(){
     $('#sidepanel_consultants').removeClass('show').addClass('hide');    
+}
+
+function close_sidepanel_second(){
+    $('#sidepanel_second_consultants').removeClass('show').addClass('hide');    
 }
 </script>
 

@@ -29,9 +29,10 @@ $(document).ready(function() {
                         {display: 'Highest Education Qualification', name : 'highest_edu', width : 300, sortable : false, align: 'left', hide: true},
                     ],
                     buttons : [
-                        {name: 'Add', bclass: 'add', onpress : test},
-                        {name: 'Edit', bclass: 'edit', onpress : test},
-                        {name: 'Delete', bclass: 'delete', onpress : test},
+                        {name: 'Add', bclass: 'add', onpress : Consultant_Grid_Actions},
+                        {name: 'Edit', bclass: 'edit', onpress : Consultant_Grid_Actions},
+                        {name: 'Delete', bclass: 'delete', onpress : Consultant_Grid_Actions},
+                        {name: 'Designation', bclass: 'designation', onpress : Consultant_Grid_Actions},
                         {separator: true}
                     ],
                     searchitems : [
@@ -59,7 +60,7 @@ $(document).ready(function() {
     });
 });
 
-function test(com,grid)
+function Consultant_Grid_Actions(com,grid)
 {
     if (com==='Delete')
     {
@@ -102,6 +103,14 @@ function test(com,grid)
         } else {
             jAlert('Record Not Selected!', 'E');
         }
+    }
+    else if (com==='Designation')
+    {
+        $('#sidepanel_consultants_contents').empty().html(
+            '<table class="flex-grid-div" id="designation_flex" style="display:none"></table>'
+        );
+        $('#sidepanel_consultants').removeClass('hide').addClass('show');
+        designation_flex_load();
     }
     else if (com==='Add')
     {

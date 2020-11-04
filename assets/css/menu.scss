@@ -129,6 +129,10 @@ body {
         transition: width 0.8s ease-in-out; 
         overflow-y: hidden !important;
 
+        .second {
+            z-index: 21 !important;
+        }
+
         .sidepanel-close {
             width: 32px;
             height: 32px;
@@ -228,10 +232,124 @@ body {
     }
 }
 
-
+// ============================================================================
 
 @media screen and (max-width: 800px){
     .menu {
         display: none;
+    }
+
+    .sidepanel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        // min-width: 50vw;
+        min-height: 100vh;
+        z-index: 20;
+        background-color: #ffffff;
+        box-shadow: -8px 0px 16px 0px rgba(0,0,0,0.2) ;
+        transition: width 0.8s ease-in-out; 
+        overflow-y: hidden !important;
+
+        .second {
+            z-index: 21 !important;
+        }
+
+        .sidepanel-close {
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px;
+            transition: width 0.8s ease-in-out;
+        }
+
+        .sidepanel-close:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        .sidepanel-frame {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-width: 100%;
+            min-height: 100vh;
+            margin-top: 50px;
+            // background-color: lightcoral;
+        }
+
+        .sidepanel-contents{
+            // background-color: lightblue;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+
+            .sidepanel-title {
+                font-size: 1.2rem;
+                padding: 20px 0;
+            }
+
+            .sidepanel-input {
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #b9b9b9;
+                border-radius: 3px;
+            }
+
+            .sidepanel-input:focus {
+                border: 1px solid #1296ca;
+            }
+
+            .sidepanel-button {
+                background: #1296ca;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 3px;
+                color: #f1f1f1;
+                font-weight: bold;
+                width: 50%;
+            }
+
+            .sidepanel-button:hover{
+                background-color: #0d739b;
+            }
+
+            .sidepanel-label {
+                color: #242424;
+                font-size: 0.8rem;
+                padding: 5px 0 5px 0;
+            }
+
+            .sidepanel-select {
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #b9b9b9;
+                border-radius: 3px;
+            }
+
+            .sidepanel-select:focus {
+                border: 1px solid #1296ca;
+            }
+        }
+    }
+
+    .hide {
+        // display: none;
+        // opacity: 0;
+        // transform: translateX(1000px);
+        width: 0;
+        visibility: hidden;
+        z-index: -100;
+    }
+
+    .show {
+        // display: block;
+        // opacity: 1;
+        // transform: translateX(0px);
+        width: 100vw;
+        visibility: visible;
+        z-index: 2;
     }
 }
