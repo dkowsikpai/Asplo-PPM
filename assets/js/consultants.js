@@ -107,7 +107,8 @@ function Consultant_Grid_Actions(com,grid)
     else if (com==='Designation')
     {
         $('#sidepanel_consultants_contents').empty().html(
-            '<table class="flex-grid-div" id="designation_flex" style="display:none"></table>'
+            '<table class="flex-grid-div" id="designation_flex" style="display:none"></table>' + 
+            '<div class="side-panel-bottom-div none" id="desgnation_flex_form"></div>'
         );
         $('#sidepanel_consultants').removeClass('hide').addClass('show');
         designation_flex_load();

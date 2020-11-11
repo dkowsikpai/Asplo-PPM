@@ -79,24 +79,15 @@ function Designation_Grid_Actions(com,grid)
     }
     else if (com==='Add')
     {
-        $('#sidepanel_second_consultants').removeClass('hide').addClass('show');
-        // $('#sidepanel_consultants_contents').empty().html(
-        //     "<div class='sidepanel-contents'>" +
-        //         "<h3 class='sidepanel-title'>Add Consultant</h3>" +
-        //         "<input class='sidepanel-input' type='text' placeholder='Name' maxlength='200' id='consultant_name_add'/>" +
-        //         "<input class='sidepanel-input' type='text' placeholder='Phone' maxlength='12' id='consultant_phone_add'/>" +
-        //         "<input class='sidepanel-input' type='email' placeholder='Email' maxlength='200' id='consultant_email_add'/>" +
-        //         "<input class='sidepanel-input' type='number' placeholder='Experience' maxlength='200' id='consultant_experience_add'/>" +
-        //         "<input class='sidepanel-input' type='text' placeholder='Highest Educational Qualification' maxlength='200' id='consultant_edu_add'/>" +
-        //         "<input class='sidepanel-input' type='text' placeholder='Present Address' maxlength='300' id='consultant_presentAddress_add'/>" +
-        //         "<input class='sidepanel-input' type='text' placeholder='Permanent Address' maxlength='300' id='consultant_pAddress_add'/>" +
-        //         "<label class='sidepanel-label' for='consultant_designation_add'>Designation:</label><br/>" +
-        //         "<select class='sidepanel-select' id='consultant_designation_add'></select>" +
-        //         "<button class='sidepanel-button' onclick='submit_new_consultant()'>Submit</button>" +
-        //     "</div>"
-        // );
-        // $('#consultant_designation_add').append(designationList);
-        // $('#sidepanel_consultants').removeClass('hide').addClass('show');
+        
+        $('#desgnation_flex_form').empty().html(
+            "<div class='sidepanel-contents'>" +
+                "<h3 class='sidepanel-title'>Add Designation</h3>" +
+                "<input class='sidepanel-input' type='text' placeholder='Designation' maxlength='200' id='designation_designation_add'/>" +
+                "<input class='sidepanel-input' type='number' placeholder='Grade' maxlength='12' id='designation_grade_add'/>" +
+                "<button class='sidepanel-button' onclick='submit_new_designation()'>Submit</button>" +
+            "</div>"
+        ).removeClass('none').addClass('display');
 
     }
     else if (com==='Edit')
@@ -161,4 +152,29 @@ function Designation_Grid_Actions(com,grid)
 }
 
 
+function submit_new_designation(){
+    let designation = $('#designation_designation_add').val();
+    let grade = $('#designation_grade_add').val();
 
+    $.ajax({
+        url: 'add_new_designation.php',
+        type: "POST",
+        data: {
+            designation: designation,
+            grade: grade
+        },
+        error: (e)=>{
+            console.log(e);
+        },
+        success: (response)=>{
+            if (response.success) {
+                jAlert(response.message, "S");
+                // Flex Reload
+                $('#designation_flex').flexReload();
+                $('#desgnation_flex_form').empty();
+            } else {
+                jAlert(response.message, "E");
+            }
+        }
+    });
+}

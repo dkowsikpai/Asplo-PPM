@@ -221,6 +221,19 @@ body {
   .sidepanel .sidepanel-contents .sidepanel-select:focus {
     border: 1px solid #1296ca;
   }
+  .sidepanel .side-panel-bottom-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-width: 100%;
+    padding: 0 0 20px 40px;
+  }
+  .none {
+    display: none;
+  }
+  .display {
+    display: block;
+  }
   .hide {
     width: 0;
     visibility: hidden;
