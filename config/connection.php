@@ -1,9 +1,9 @@
 <?php
 function connection(){
     $servername = "localhost";
-    $username = "dinesh";
+    $username = "root";
     $password = "a";
-    $dbname = "ppm";
+    $dbname = "open_ppm";
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn) {

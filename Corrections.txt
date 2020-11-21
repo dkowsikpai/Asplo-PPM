@@ -1,10 +1,11 @@
 USE open_ppm;
-ALTER TABLE `Customers` CHANGE `pAddress` `pAddress` VARCHAR(300) NULL DEFAULT NULL;
+{% comment %} ALTER TABLE `Customers` CHANGE `pAddress` `pAddress` VARCHAR(300) NULL DEFAULT NULL;
 ALTER TABLE `Designations` CHANGE `ID` `ID` INT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`ID`); 
 ALTER TABLE `Technology` CHANGE `ID` `ID` INT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`ID`); 
 ALTER TABLE `Consultant_Technologies` CHANGE `ID` `ID` INT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`ID`); 
 ALTER TABLE `Customers` CHANGE `ID` `ID` INT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`ID`); 
-ALTER TABLE `Contacts` CHANGE `ID` `ID` INT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`ID`); 
+ALTER TABLE `Contacts` CHANGE `ID` `ID` INT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`ID`);  {% endcomment %}
+
 DELIMITER //
 CREATE FUNCTION project_status (stat INT)
 RETURNS VARCHAR(20)
@@ -23,4 +24,37 @@ BEGIN
     END;
 	RETURN stat_str;
 END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER project_add 
+BEFORE INSERT
+ON Projects FOR EACH ROW
+BEGIN
+	IF NEW.pCompleted > 100 THEN
+    	SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Percentage must be <= 100';
+    ELSEIF NEW.Start_Date > NEW.Finish_Date THEN
+    	SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Start Date must be <= Finish Date';
+    END IF;
+    
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER project_update 
+BEFORE UPDATE
+ON Projects FOR EACH ROW
+BEGIN
+	IF NEW.pCompleted > 100 THEN
+    	SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Percentage must be <= 100';
+    ELSEIF NEW.Start_Date > NEW.Finish_Date THEN
+    	SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Start Date must be <= Finish Date';
+    END IF;
+    
+END//
 DELIMITER ;
