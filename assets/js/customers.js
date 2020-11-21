@@ -15,6 +15,7 @@ $(document).ready(function() {
                 {name: 'Add', bclass: 'add', onpress : Customer_Grid_Actions},
                 {name: 'Edit', bclass: 'edit', onpress : Customer_Grid_Actions},
                 {name: 'Delete', bclass: 'delete', onpress : Customer_Grid_Actions},
+                {name: 'Contacts', bclass: 'contacts', onpress : Customer_Grid_Actions},
                 {separator: true}
             ],
             searchitems : [
@@ -152,6 +153,25 @@ function Customer_Grid_Actions(com,grid)
             
         } else {
             jAlert("Select one item", "E");
+        }
+    }
+    else if (com==='Contacts')
+    {
+
+        if ($('.trSelected',grid).length>0) {
+
+            var items = $('.trSelected', grid);
+            var itemlist = items[0].id.substr(3);
+            // alert(itemlist);
+            $('#sidepanel_customers_contents').empty().html(
+                '<table class="flex-grid-div" id="contacts_flex" style="display:none"></table>' + 
+                '<div class="side-panel-bottom-div none" id="contacts_flex_form"></div>'
+            );
+            $('#sidepanel_customers').removeClass('hide').addClass('show');
+            contacts_flex_load(itemlist);
+                
+        } else {
+            jAlert('Record Not Selected!', 'E');
         }
     }
 }

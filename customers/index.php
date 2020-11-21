@@ -50,6 +50,11 @@ if (!isset($_SESSION["login"])){
     {
         background: url("../assets/flexgrid/images/filter.png") no-repeat center left;
     }
+
+    .flexigrid div.fbutton .contacts
+    {
+        background: url("../assets/images/Customers/contacts.png") no-repeat center left;
+    }
         
 
 </style>
@@ -76,6 +81,7 @@ if (!isset($_SESSION["login"])){
 </body>
 <script src="../assets/js/jquery.js" type="text/javascript"></script>
 <script src="../assets/js/jquery.alerts.js" type="text/javascript"></script>
+<script src="../assets/js/customers_contact.js" type="text/javascript"></script>
 <script src="../assets/js/customers.js" type="text/javascript"></script>
 <script type="text/javascript" src="../assets/flexgrid/flexigrid.js"></script>
 <script type="text/javascript">

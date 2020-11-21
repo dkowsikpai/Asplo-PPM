@@ -3,7 +3,7 @@ function technology_flex_load(itemlist) {
     custID = itemlist;
     $("#technology_flex").flexigrid
     ({
-            url: 'consultant_tech.php?',
+            url: 'consultant_tech.php',
             dataType: 'json',
             colModel : [
                 {display: 'ID', name : 'id', width : 80, sortable : true, align: 'center', hide: true},
@@ -119,7 +119,7 @@ function submit_new_tech(){
     let tech = $('#consultant_tech_add').val();
 
     $.ajax({
-        url: 'add_new_consultatnt_tech.php',
+        url: 'add_new_consultant_tech.php',
         type: "POST",
         data: {
             id: custID,

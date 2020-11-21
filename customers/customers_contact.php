@@ -54,14 +54,14 @@ if (isset($_POST['qtype']) || $_POST['qtype'] = "") {
 }
 
 if($query!=''){
-    $where = "WHERE ".$qtype." LIKE '%".$query."%' AND Consultant_Technologies.ConsultantID=".$id;
+    $where = "WHERE ".$qtype." LIKE '%".$query."%' AND Contacts.CustomerID =".$id;
 } else {
-    $where ='WHERE Consultant_Technologies.ConsultantID='.$id;
+    $where ='WHERE Contacts.CustomerID='.$id;
 }
 
-$sql = "SELECT Consultant_Technologies.ID, TechID as techid, ConsultantID as cid, Technology.Technology as name, Technology.Version as version FROM Consultant_Technologies JOIN Technology ON Consultant_Technologies.TechID=Technology.ID ".$where." ORDER BY ".$sortName." ".$sortOrder." LIMIT ". $page*$rp;
+$sql = "SELECT ID, Conatct_Person as cp, phone, mobile, Email, profile_desc FROM Contacts ".$where." ORDER BY ".$sortName." ".$sortOrder." LIMIT ". $page*$rp;
 // echo $sql;
-$sqlTot = "SELECT COUNT(*) AS total FROM Consultant_Technologies JOIN Technology ON Consultant_Technologies.TechID=Technology.ID WHERE Consultant_Technologies.ConsultantID=".$id;
+$sqlTot = "SELECT COUNT(*) AS total FROM Contacts WHERE Contacts.CustomerID =".$id;
 $totalq = mysqli_query($conn, $sqlTot);
 $total = mysqli_fetch_assoc($totalq);
 $total = $total["total"];
@@ -72,7 +72,7 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         array_push($data, array(
             "id"=> $row["ID"],
-            "cell" => array($row["ID"], $row["techid"], $row["cid"], $row["name"], $row["version"])
+            "cell" => array($row["ID"], $row["cp"], $row["phone"], $row["mobile"], $row["Email"], $row["profile_desc"])
         ));
     }
 }
