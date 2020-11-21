@@ -18,6 +18,9 @@ function navBar (){
         <a href="../customers/"><span class="menu-item"> 
             Projects
         </span></a>
+        <a href="../technologies/"><span class="menu-item"> 
+            Technologies
+        </span></a>
         <div class="dropdown">
             <button class="dropbtn">
                 <span class="menu-avatar">
@@ -55,6 +58,12 @@ function navBar (){
             <div class="mob-menu-item-img">
                 <img src="../assets/images/Menu/projects.png" alt="Projects" class="mob-menu-img"/>
                 <p class="mob-menu-item-subtitle">Projects</p>
+            </div>
+        </span></a>
+        <a href="../technologies/"><span class="mob-menu-item">
+            <div class="mob-menu-item-img">
+                <img src="../assets/images/Menu/tech.png" alt="Technologies" class="mob-menu-img"/>
+                <p class="mob-menu-item-subtitle">Technologies</p>
             </div>
         </span></a>
         <a href="../logout/"><span class="mob-menu-item">
