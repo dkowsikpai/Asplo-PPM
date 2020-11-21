@@ -29,7 +29,7 @@ body {
   background-color: #e9e9e977;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1200px) {
   .menu {
     min-height: 1vh;
     min-width: 100vw;
@@ -249,7 +249,7 @@ body {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .menu {
     display: none;
   }

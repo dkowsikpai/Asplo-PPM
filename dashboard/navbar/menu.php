@@ -14,8 +14,7 @@ function navBar (){
         <a href="../customers/"><span class="menu-item">
             Customers
         </span></a>
-        <!-- Change the href -->
-        <a href="../customers/"><span class="menu-item"> 
+        <a href="../projects/"><span class="menu-item"> 
             Projects
         </span></a>
         <a href="../technologies/"><span class="menu-item"> 
@@ -53,8 +52,7 @@ function navBar (){
                 <p class="mob-menu-item-subtitle">Customers</p>
             </div>
         </span></a>
-        <!-- change href -->
-        <a href="../customers/"><span class="mob-menu-item">
+        <a href="../projects/"><span class="mob-menu-item">
             <div class="mob-menu-item-img">
                 <img src="../assets/images/Menu/projects.png" alt="Projects" class="mob-menu-img"/>
                 <p class="mob-menu-item-subtitle">Projects</p>
