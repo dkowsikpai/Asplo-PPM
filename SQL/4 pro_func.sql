@@ -86,3 +86,25 @@ DELIMITER ;
 
 CALL getCummulativeDailyCost(2, 1, @total_cost);
 SELECT @total_cost;
+
+
+DELIMITER //
+CREATE FUNCTION project_status (stat INT)
+RETURNS VARCHAR(20)
+DETERMINISTIC
+BEGIN
+	DECLARE stat_str VARCHAR(20) DEFAULT "";
+    SET stat_str = CASE 
+    	WHEN stat = 0 THEN "Not Started yet"
+    	WHEN stat = 1 THEN "Development"
+    	WHEN stat = 2 THEN "Testing"
+    	WHEN stat = 3 THEN "Alpha"
+    	WHEN stat = 4 THEN "Beta"
+    	WHEN stat = 5 THEN "Production Release"
+    	WHEN stat = 6 THEN "Completed"
+    	WHEN stat = 7 THEN "Maintanace"
+    END;
+	RETURN stat_str;
+END //
+DELIMITER ;
+

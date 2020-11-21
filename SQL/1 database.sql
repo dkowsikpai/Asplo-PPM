@@ -1,7 +1,7 @@
 -- Create database
 CREATE DATABASE open_ppm;
 
-USE ppm;
+USE open_ppm;
 
 -- Create table contacts
 CREATE TABLE open_ppm.Contacts ( 
@@ -20,9 +20,9 @@ CREATE TABLE open_ppm.Customers (
     ID INT NOT NULL UNIQUE AUTO_INCREMENT, 
     phone VARCHAR(14) NOT NULL, 
     email VARCHAR(200) NOT NULL, 
-    fax VARCHAR(14), pAddress INT, 
-    PRIMARY KEY (ID), 
-    FOREIGN KEY (pAddress) REFERENCES Contacts(ID) 
+    fax VARCHAR(14), 
+    pAddress VARCHAR(200), 
+    PRIMARY KEY (ID) 
 );
 
 
