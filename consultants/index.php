@@ -34,6 +34,10 @@ if (!isset($_SESSION["login"])){
     .flexigrid div.fbutton .designation
     {
         background: url("../assets/images/Consultants/designation.png") no-repeat center left;
+    }
+    .flexigrid div.fbutton .technology
+    {
+        background: url("../assets/images/Consultants/cpu.png") no-repeat center left;
     }   
 
 </style>
@@ -68,6 +72,7 @@ if (!isset($_SESSION["login"])){
 <script src="../assets/js/jquery.js" type="text/javascript"></script>
 <script src="../assets/js/jquery.alerts.js" type="text/javascript"></script>
 <script src="../assets/js/designation.js" type="text/javascript"></script>
+<script src="../assets/js/consultant_tech.js" type="text/javascript"></script>
 <script src="../assets/js/consultants.js" type="text/javascript"></script>
 <script type="text/javascript" src="../assets/flexgrid/flexigrid.js"></script>
 <script type="text/javascript">

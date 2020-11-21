@@ -33,6 +33,7 @@ $(document).ready(function() {
                         {name: 'Edit', bclass: 'edit', onpress : Consultant_Grid_Actions},
                         {name: 'Delete', bclass: 'delete', onpress : Consultant_Grid_Actions},
                         {name: 'Designation', bclass: 'designation', onpress : Consultant_Grid_Actions},
+                        {name: 'Technology', bclass: 'technology', onpress : Consultant_Grid_Actions},
                         {separator: true}
                     ],
                     searchitems : [
@@ -112,6 +113,25 @@ function Consultant_Grid_Actions(com,grid)
         );
         $('#sidepanel_consultants').removeClass('hide').addClass('show');
         designation_flex_load();
+    }
+    else if (com==='Technology')
+    {
+
+        if ($('.trSelected',grid).length>0) {
+
+            var items = $('.trSelected', grid);
+            var itemlist = items[0].id.substr(3);
+            // alert(itemlist);
+            $('#sidepanel_consultants_contents').empty().html(
+                '<table class="flex-grid-div" id="technology_flex" style="display:none"></table>' + 
+                '<div class="side-panel-bottom-div none" id="technology_flex_form"></div>'
+            );
+            $('#sidepanel_consultants').removeClass('hide').addClass('show');
+            technology_flex_load(itemlist);
+                
+        } else {
+            jAlert('Record Not Selected!', 'E');
+        }
     }
     else if (com==='Add')
     {

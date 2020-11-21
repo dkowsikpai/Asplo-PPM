@@ -54,7 +54,8 @@
 			 onChangeSort: false,
 			 onSuccess: false,
 			 onError: false,
-			 onSubmit: false // using a custom populate function
+			 onSubmit: false, // using a custom populate function
+			 id: -1
 		  }, p);
 		  		
 
@@ -609,6 +610,7 @@
 					,{ name : 'sortorder', value : p.sortorder }
 					,{ name : 'query', value : p.query}
 					,{ name : 'qtype', value : p.qtype}
+					,{ name : 'id', value : p.id}
 				];							 
 							 
 				if (p.params)
