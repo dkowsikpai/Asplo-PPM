@@ -142,6 +142,25 @@ function Projects_Grid_Actions(com,grid)
             jAlert('Record Not Selected!', 'E');
         }
     }
+    else if (com==='Resources')
+    {
+
+        if ($('.trSelected',grid).length>0) {
+
+            var items = $('.trSelected', grid);
+            var itemlist = items[0].id.substr(3);
+            // alert(itemlist);
+            $('#sidepanel_projects_contents').empty().html(
+                '<table class="flex-grid-div" id="project_res_flex" style="display:none"></table>' + 
+                '<div class="side-panel-bottom-div none" id="project_res_flex_form"></div>'
+            );
+            $('#sidepanel_projects').removeClass('hide').addClass('show');
+            project_res_flex_load(itemlist);
+                
+        } else {
+            jAlert('Record Not Selected!', 'E');
+        }
+    }
      else if (com==='Add')
     {
         $('#sidepanel_projects_contents').empty().html(
