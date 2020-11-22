@@ -1,14 +1,14 @@
-let custID = -1;
-function technology_flex_load(itemlist) {
-    custID = itemlist;
-    $("#technology_flex").flexigrid
+let projID = -1;
+function project_technology_flex_load(itemlist) {
+    projID = itemlist;
+    $("#project_technology_flex").flexigrid
     ({
-            url: 'consultant_tech.php',
+            url: 'project_tech.php',
             dataType: 'json',
             colModel : [
                 {display: 'ID', name : 'id', width : 80, sortable : true, align: 'center', hide: true},
                 {display: 'TechID', name : 'techid', width : 80, sortable : true, align: 'left', hide: true},
-                {display: 'CID', name : 'cid', width : 80, sortable : true, align: 'left', hide: true},
+                {display: 'PID', name : 'pid', width : 80, sortable : true, align: 'left', hide: true},
                 {display: 'Technology', name : 'name', width : 150, sortable : true, align: 'left'},
                 {display: 'Version', name : 'version', width : 150, sortable : true, align: 'left'}
             ],
@@ -53,7 +53,7 @@ function Tech_Grid_Actions(com,grid)
                         var itemlist = items[0].id.substr(3);
                         // alert(itemlist);
                         $.ajax({
-                            url: 'delete_cust_tech.php',
+                            url: 'delete_proj_tech.php',
                             type: 'POST',
                             data: {
                                 id: itemlist
@@ -65,7 +65,7 @@ function Tech_Grid_Actions(com,grid)
                                 if (response.success) {
                                     jAlert(response.message, "S");
                                     // Flex Reload
-                                    $('#technology_flex').flexReload();
+                                    $('#project_technology_flex').flexReload();
                                 } else {
                                     jAlert(response.message, "E");
                                 }
@@ -87,8 +87,8 @@ function Tech_Grid_Actions(com,grid)
         $.ajax({
             url: 'get_tech_list.php',
             type: 'POST',
-            data: {
-                id: custID
+            data:{
+                id: projID
             },
             error: (e)=>{
                 console.error(e);
@@ -100,15 +100,15 @@ function Tech_Grid_Actions(com,grid)
                     techList += `<option value="${item.id}">${item.title}</option>`;
                 });
                 // Flex Reload
-                $('#technology_flex_form').empty().html(
+                $('#project_technology_flex_form').empty().html(
                     "<div class='sidepanel-contents'>" +
-                        "<h3 class='sidepanel-title'>Add Technology</h3>" +
-                        "<select class='sidepanel-select' id='consultant_tech_add'></select>" +
-                        "<button class='sidepanel-button' onclick='submit_new_tech()'>Submit</button>" +
+                        "<h3 class='sidepanel-title'>Add Project Technology</h3>" +
+                        "<select class='sidepanel-select' id='project_tech_add'></select>" +
+                        "<button class='sidepanel-button' onclick='submit_new_proj_tech()'>Submit</button>" +
                     "</div>"
                 ).removeClass('none').addClass('display');
-                $('#consultant_tech_add').append(techList);
-                    // $('#technology_flex').flexReload();
+                $('#project_tech_add').append(techList);
+                    // $('#project_technology_flex').flexReload();
                 
             }
         });
@@ -118,14 +118,14 @@ function Tech_Grid_Actions(com,grid)
 }
 
 
-function submit_new_tech(){
-    let tech = $('#consultant_tech_add').val();
+function submit_new_proj_tech(){
+    let tech = $('#project_tech_add').val();
 
     $.ajax({
-        url: 'add_new_consultant_tech.php',
+        url: 'add_new_project_tech.php',
         type: "POST",
         data: {
-            id: custID,
+            id: projID,
             tech: tech
         },
         error: (e)=>{
@@ -135,8 +135,8 @@ function submit_new_tech(){
             if (response.success) {
                 jAlert(response.message, "S");
                 // Flex Reload
-                $('#technology_flex').flexReload();
-                $('#technology_flex_form').removeClass('display').addClass('none').empty();
+                $('#project_technology_flex').flexReload();
+                $('#project_technology_flex_form').removeClass('display').addClass('none').empty();
             } else {
                 jAlert(response.message, "E");
             }

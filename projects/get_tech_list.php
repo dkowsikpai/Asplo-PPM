@@ -4,7 +4,8 @@ $conn = connection();
 
 $id = $_POST["id"];
 $data = array();
-$sql = "SELECT ID, CONCAT(Technology, ' (', Version,')') as title FROM Technology WHERE ID NOT IN (SELECT TechID FROM Consultant_Technologies WHERE ConsultantID=$id)";
+$sql = "SELECT ID, CONCAT(Technology, ' (', Version,')') as title FROM Technology WHERE ID NOT IN (SELECT TechID FROM Project_Technologies WHERE ProjectID=$id)";
+// echo $sql;
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)){

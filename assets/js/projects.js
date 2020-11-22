@@ -123,33 +123,24 @@ function Projects_Grid_Actions(com,grid)
             jAlert('Record Not Selected!', 'E');
         }
     }
-    else if (com==='Designation')
+    else if (com==='Technology')
     {
-    //     $('#sidepanel_consultants_contents').empty().html(
-    //         '<table class="flex-grid-div" id="designation_flex" style="display:none"></table>' + 
-    //         '<div class="side-panel-bottom-div none" id="desgnation_flex_form"></div>'
-    //     );
-    //     $('#sidepanel_consultants').removeClass('hide').addClass('show');
-    //     designation_flex_load();
-    // }
-    // else if (com==='Technology')
-    // {
 
-    //     if ($('.trSelected',grid).length>0) {
+        if ($('.trSelected',grid).length>0) {
 
-    //         var items = $('.trSelected', grid);
-    //         var itemlist = items[0].id.substr(3);
-    //         // alert(itemlist);
-    //         $('#sidepanel_consultants_contents').empty().html(
-    //             '<table class="flex-grid-div" id="technology_flex" style="display:none"></table>' + 
-    //             '<div class="side-panel-bottom-div none" id="technology_flex_form"></div>'
-    //         );
-    //         $('#sidepanel_consultants').removeClass('hide').addClass('show');
-    //         technology_flex_load(itemlist);
+            var items = $('.trSelected', grid);
+            var itemlist = items[0].id.substr(3);
+            // alert(itemlist);
+            $('#sidepanel_projects_contents').empty().html(
+                '<table class="flex-grid-div" id="project_technology_flex" style="display:none"></table>' + 
+                '<div class="side-panel-bottom-div none" id="project_technology_flex_form"></div>'
+            );
+            $('#sidepanel_projects').removeClass('hide').addClass('show');
+            project_technology_flex_load(itemlist);
                 
-    //     } else {
-    //         jAlert('Record Not Selected!', 'E');
-    //     }
+        } else {
+            jAlert('Record Not Selected!', 'E');
+        }
     }
      else if (com==='Add')
     {
@@ -203,7 +194,7 @@ function Projects_Grid_Actions(com,grid)
                     if (response.success){
                         $('#sidepanel_projects_contents').empty().html(
                             "<div class='sidepanel-contents'>" +
-                                "<h3 class='sidepanel-title'>Edit Consultant</h3>" +
+                                "<h3 class='sidepanel-title'>Edit Project</h3>" +
                                 "<input type='hidden' placeholder='ID' maxlength='200' id='projects_id_edit'/>" +
                                 "<input class='sidepanel-input' type='text' placeholder='Title' maxlength='200' id='projects_title_edit'/>" +
                                 "<input class='sidepanel-input' type='text' placeholder='Description' maxlength='300' id='projects_desc_edit'/>" +
