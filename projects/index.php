@@ -76,6 +76,7 @@ if (!isset($_SESSION["login"])){
 <script src="../assets/js/projects.js" type="text/javascript"></script>
 <script src="../assets/js/project_tech.js" type="text/javascript"></script>
 <script src="../assets/js/project_res.js" type="text/javascript"></script>
+<script src="../assets/js/project_transaction.js" type="text/javascript"></script>
 <script type="text/javascript" src="../assets/flexgrid/flexigrid.js"></script>
 <script type="text/javascript">
 function close_sidepanel(){

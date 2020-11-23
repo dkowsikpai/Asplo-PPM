@@ -58,3 +58,48 @@ BEGIN
     
 END//
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE getLastProjectTransaction(IN proj INT, IN res_id INT, OUT pc DECIMAL(5, 2))
+BEGIN 
+	SELECT Percentage_Completed INTO pc FROM Project_Transaction WHERE Resource_ID=res_id AND ProjectID=proj ORDER BY Percentage_Completed DESC LIMIT 1; 
+END // 
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER project_tr_add 
+BEFORE INSERT
+ON Project_Transaction FOR EACH ROW
+BEGIN
+	DECLARE opc DECIMAL(5, 2) DEFAULT 0.0;
+	CALL getLastProjectTransaction(NEW.ProjectID, NEW.Resource_ID, opc);
+    IF opc >= NEW.Percentage_Completed THEN
+    	SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Percentage must be greater than last entry';
+    END IF;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER project_transation_insert_update
+AFTER INSERT
+ON Project_Transaction FOR EACH ROW
+BEGIN
+	DECLARE old_actual_effort DEC(12, 2);
+    SELECT Actual_Effort INTO old_actual_effort FROM Project_Resources WHERE Resource_ID = NEW.Resource_ID AND Project_ID = NEW.ProjectID;
+    SET old_actual_effort = old_actual_effort + NEW.Effort_Spent;
+	UPDATE Project_Resources SET Actual_Effort = old_actual_effort WHERE Resource_ID = NEW.Resource_ID AND Project_ID = NEW.ProjectID;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER project_transation_delete_update
+BEFORE DELETE
+ON Project_Transaction FOR EACH ROW
+BEGIN
+	DECLARE old_actual_effort DEC(12, 2);
+    SELECT Actual_Effort INTO old_actual_effort FROM Project_Resources WHERE Resource_ID = OLD.Resource_ID AND Project_ID = OLD.ProjectID;
+    SET old_actual_effort = old_actual_effort - OLD.Effort_Spent;
+	UPDATE Project_Resources SET Actual_Effort = old_actual_effort WHERE Resource_ID = OLD.Resource_ID AND Project_ID = OLD.ProjectID;
+END //
+DELIMITER ;
