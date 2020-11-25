@@ -41,6 +41,10 @@ if (!isset($_SESSION["login"])){
     {
         background: url("../assets/images/Projects/transaction.png") no-repeat center left;
     }
+    .flexigrid div.fbutton .excel
+    {
+        background: url("../assets/images/Projects/excel.png") no-repeat center left;
+    }
 
 </style>
 </head>

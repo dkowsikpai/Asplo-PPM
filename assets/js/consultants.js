@@ -34,6 +34,7 @@ $(document).ready(function() {
                         {name: 'Delete', bclass: 'delete', onpress : Consultant_Grid_Actions},
                         {name: 'Designation', bclass: 'designation', onpress : Consultant_Grid_Actions},
                         {name: 'Technology', bclass: 'technology', onpress : Consultant_Grid_Actions},
+                        // {name: 'Excel Export', bclass: 'excel', onpress : Consultant_Grid_Actions},
                         {separator: true}
                     ],
                     searchitems : [
@@ -213,6 +214,26 @@ function Consultant_Grid_Actions(com,grid)
         } else {
             jAlert("Select one item", "E");
         }
+    } else if (com==='Excel Export')
+    {
+        // $('#add_product').click();
+
+
+        // if ($('.trSelected',grid).length>0) {
+
+        //     let items = $('.trSelected',grid);
+        //     // console.log(items);
+        //     let itemlist = items[0].id.substr(3);
+        //     // alert(itemlist);
+
+
+            // get userdata and html inside modal
+            window.open('consultants_export.php', "_blank");
+
+
+        // } else {
+        //     jAlert("Select one item", "E");
+        // }
     }
 }
 

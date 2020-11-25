@@ -8,14 +8,14 @@ function navBar (){
         <a href="../dashboard/"><span class="menu-item">
             Dashboard
         </span></a>
+        <a href="../projects/"><span class="menu-item"> 
+            Projects
+        </span></a>
         <a href="../consultants/"><span class="menu-item">
             Consultants
         </span></a>
         <a href="../customers/"><span class="menu-item">
             Customers
-        </span></a>
-        <a href="../projects/"><span class="menu-item"> 
-            Projects
         </span></a>
         <a href="../technologies/"><span class="menu-item"> 
             Technologies
@@ -40,6 +40,12 @@ function navBar (){
                 <p class="mob-menu-item-subtitle">Dashboard</p>
             </div>
         </span></a>
+        <a href="../projects/"><span class="mob-menu-item">
+            <div class="mob-menu-item-img">
+                <img src="../assets/images/Menu/projects.png" alt="Projects" class="mob-menu-img"/>
+                <p class="mob-menu-item-subtitle">Projects</p>
+            </div>
+        </span></a>
         <a href="../consultants/"><span class="mob-menu-item">
             <div class="mob-menu-item-img">
                 <img src="../assets/images/Menu/consultants.png" alt="Consultants" class="mob-menu-img"/>
@@ -50,12 +56,6 @@ function navBar (){
             <div class="mob-menu-item-img">
                 <img src="../assets/images/Menu/customers.png" alt="Customers" class="mob-menu-img"/>
                 <p class="mob-menu-item-subtitle">Customers</p>
-            </div>
-        </span></a>
-        <a href="../projects/"><span class="mob-menu-item">
-            <div class="mob-menu-item-img">
-                <img src="../assets/images/Menu/projects.png" alt="Projects" class="mob-menu-img"/>
-                <p class="mob-menu-item-subtitle">Projects</p>
             </div>
         </span></a>
         <a href="../technologies/"><span class="mob-menu-item">
