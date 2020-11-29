@@ -1,4 +1,4 @@
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1200px) {
   .project-selector-div {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -66,7 +66,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .project-selector-div {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -105,7 +105,6 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
-    background-color: lightblue;
   }
   .chart-row {
     height: 100vh;
@@ -123,12 +122,10 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
-    background-color: lightgreen;
   }
   .chart-panel {
     width: 100vw;
     height: 50vh;
-    background-color: lightcoral;
     margin: 5px 0;
   }
 }

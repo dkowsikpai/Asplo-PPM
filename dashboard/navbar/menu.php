@@ -27,8 +27,8 @@ function navBar (){
                 </span>
             </button>
             <div class="dropdown-content">
-              <a href="#">Profile</a>
-              <a href="#">Settings</a>
+              <!-- <a href="#">Profile</a> -->
+              <!-- <a href="#">Settings</a> -->
               <a href="../logout/">Logout</a>
             </div>
           </div>          

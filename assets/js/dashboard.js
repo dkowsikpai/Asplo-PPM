@@ -43,6 +43,7 @@ function dasahboard_chart_1(s1, ticks){
         plot1 = $.jqplot('chart_1', [s1], {
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
+            title: "Customer vs. Projects",
             seriesDefaults:{
                 renderer:$.jqplot.BarRenderer,
                 rendererOptions: {
@@ -96,6 +97,7 @@ function dasahboard_chart_2(s1, ticks){
         plot1 = $.jqplot('chart_2', [s1], {
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
+            title: "Technology vs. Projects",
             seriesDefaults:{
                 renderer:$.jqplot.BarRenderer,
                 rendererOptions: {
@@ -149,6 +151,7 @@ function dasahboard_chart_3(s1, s2, ticks){
         plot1 = $.jqplot('chart_3', [s1, s2], {
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
+            title: "Projects Costs (INR)",
             seriesDefaults:{
                 renderer:$.jqplot.BarRenderer,
                 // rendererOptions: {
@@ -215,6 +218,7 @@ function dasahboard_chart_4(s1, ticks){
         plot1 = $.jqplot('chart_4', [s1], {
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
+            title: "Consultant vs. Projects",
             seriesDefaults:{
                 renderer: $.jqplot.BarRenderer,
                 rendererOptions: {
@@ -268,6 +272,7 @@ function dasahboard_chart_5(s1, ticks){
         plot1 = $.jqplot('chart_5', [s1], {
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
+            title: "Consultants vs. Technology",
             seriesDefaults:{
                 renderer: $.jqplot.BarRenderer,
                 rendererOptions: {
@@ -321,6 +326,7 @@ function dasahboard_chart_6(s1, s2, ticks){
         plot1 = $.jqplot('chart_6', [s1, s2], {
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
+            title: "Consultants Efforts(hours)",
             seriesDefaults:{
                 renderer:$.jqplot.BarRenderer,
                 // rendererOptions: {

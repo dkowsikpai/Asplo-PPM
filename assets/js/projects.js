@@ -52,7 +52,8 @@ $(document).ready(function() {
                         {name: 'Technology', bclass: 'technology', onpress : Projects_Grid_Actions},
                         {name: 'Resources', bclass: 'resource', onpress : Projects_Grid_Actions},
                         {name: 'Transaction', bclass: 'transaction', onpress : Projects_Grid_Actions},
-                        {name: 'Excel Export', bclass: 'excel', onpress : Projects_Grid_Actions},
+                        {name: 'Excel', bclass: 'excel', onpress : Projects_Grid_Actions},
+                        {name: 'PDF', bclass: 'pdf', onpress : Projects_Grid_Actions},
                         {separator: true}
                     ],
                     searchitems : [
@@ -271,7 +272,7 @@ function Projects_Grid_Actions(com,grid)
         } else {
             jAlert("Select one item", "E");
         }
-    } else if (com==='Excel Export')
+    } else if (com==='Excel')
     {
         // $('#add_product').click();
 
