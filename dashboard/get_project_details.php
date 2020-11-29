@@ -86,14 +86,14 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 
-$sql = "";
+$sql = "SELECT Consultants.name as name, SUM(Project_Resources.Estimate_Effort) as est_effort, SUM(Project_Resources.Actual_Effort) as act_effort FROM Project_Resources JOIN Consultants ON Project_Resources.Resource_ID = Consultants.ID GROUP BY Consultants.ID";
 // echo $sql;
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)){
         array_push($resource_name_eff, explode(" ", $row["name"])[0]);
-        array_push($resource_est_effort, (int)$row["cons"]);
-        array_push($resource_act_effort, (int)$row["cons"]);
+        array_push($resource_est_effort, (int)$row["est_effort"]);
+        array_push($resource_act_effort, (int)$row["act_effort"]);
     }
 }
 
